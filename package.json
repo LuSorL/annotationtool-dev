@@ -20,6 +20,7 @@
     "standard": "^12.0.1"
   },
   "dependencies": {
+    "d3": "^6.2.0",
     "electron": "^3.0.4",
     "electron-reload": "^1.5.0",
     "electron-store": "^2.0.0"

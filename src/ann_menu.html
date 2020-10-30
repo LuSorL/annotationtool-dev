@@ -25,7 +25,9 @@
             <button id="DownloadBtn" type="button" class="btn">Télécharger JSON</button>
          </div>
          <div id="contenu">
-            <div id="Inputtxt"></div>
+            <div id="Inputtxt">
+               
+            </div>
         </div>
 
       </div>
@@ -35,23 +37,25 @@
 </html>
 
 <script text="javascript">
-   //const { ipcRenderer } = require('electron')
 
    function GetSelectedText(){
+      
       var selectedText = '';
+      var range = [];
+
+      let element = document.createElement("mark")
+      
       if (window.getSelection) {
          selectedText = window.getSelection();
+         range.push(selectedText.getRangeAt(0).startOffset,selectedText.getRangeAt(0).endOffset) ;
+         var rangeToSelect = document.createRange();
+         rangeToSelect.selectNode(selectedText.anchorNode);
+         var objectText = rangeToSelect.toString();
+         window.getSelection().getRangeAt(0).surroundContents(element);
       }
-      else if (document.getSelection) {
-         selectedText = document.getSelection();
-      }
-      else if (document.selection) {
-         selectedText = document.selection.createRange().text;
-      } else return;
-
-      // Send selectedText to main process
-      var textSelected = selectedText.toString()
-      console.log(ipcRenderer.send('text-selection', textSelected))
+      
+      var textSelected = selectedText.toString();
+      console.log(ipcRenderer.send('text-selection', textSelected,range,objectText ))
    }
-
+ 
 </script>

@@ -11,7 +11,9 @@ const { ipcRenderer } = require('electron')
 
     // input on the form
     const input = evt.target[0]
-    ipcRenderer.send('text-selection-annotation',input.value)
+
+    var annotateAll = document.getElementById("annotateAll");
+    ipcRenderer.send('text-selection-annotation',input.value,annotateAll.checked)
     alert("Ajouté")
 
     // reset input

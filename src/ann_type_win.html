@@ -3,26 +3,16 @@
 
   <head>
     <meta charset="UTF-8">
-    <title>Texte à annoter</title>
+    <title>Annotation</title>
     <link rel="stylesheet" href="./style/ann_type.css">
   </head>
 
   <body>
-    <div class="container">
-      <div class="columns">
-        <div class="column col-10">
-          <h1 class="text-center">Ecrire texte/h1>
-
-          <form id = "InputText">
-            <div> 
-               <input class="form-input" type="text" name="add-input" placeholder=" Je voudrais annoter ...">
-               
-            </div>
-            <button class="btn" onclick="window.location.href='annotation.html'"> Annoter </button>
-         </form>
-
-        </div>
-      </div>
+    <div class="app">
+      <form id = "InputText">
+        <textarea placeholder="Annotation"></textarea>
+        <button class="btn" onclick="window.location.href='annotation.html'"> Annoter </button>
+     </form>
     </div>
 
     <script src="./type.js"></script>

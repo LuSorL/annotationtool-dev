@@ -13,23 +13,18 @@ class DataStore extends Store {
   }
 
   saveinputs () {
-    // save inputs to JSON file
     this.set('inputs', this.inputs)
-
-    // returning 'this' allows method chaining
     return this
   }
 
   getinputs () {
-    // set object's inputs to inputs in JSON file
     this.inputs = this.get('inputs') || []
-    return this
+    return this.inputs
   }
 
   addinputText (inputText) {
-    // merge the existing inputs with the new inputText
     this.inputs = [ ...this.inputs, inputText ]
-
+    //this.inputs = [ inputText ]
     return this.saveinputs()
   }
 
@@ -40,7 +35,6 @@ class DataStore extends Store {
   }
 
   addText (inputText) {
-    //this.text = [ ...this.text, inputText ]
     this.text = inputText
     return this.saveText()
   }
@@ -51,14 +45,11 @@ class DataStore extends Store {
   }
 
   addType (inputText) {
-    //this.type = [ ...this.type, inputText ]
     this.type = inputText
     return this.saveType()
   }
 
   getAnn () {
-    // set object's inputs to inputs in JSON file
-    //this.inputs = this.get('inputs') || []
     return (this.get('text') || this.get('type'))
   }
 
