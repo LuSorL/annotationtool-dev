@@ -1,0 +1,66 @@
+body {
+  background-color: #B5C7B8;
+  font-family : Londrina Shadow;
+ }
+
+/* Annotation de tout le texte*/
+.app {
+  width: 200px;
+  height: 200px;
+}
+
+/* Ecrire texte */
+.app_type {
+  width: 450px;
+  height: 400px;
+}
+
+/* Annotation spécifique */
+.app_spec {
+  width: 300px;
+  height: 200px;
+}
+
+#InputText {
+  width : inherit;
+  height : inherit;
+}
+
+h1 {
+  color : white;
+  font-size: 28px;
+}
+
+textarea {
+  width: 90%;
+  height: 10%;
+  padding: 5%;
+  margin-left: 2%;
+  margin-top: 1%;
+  box-sizing: border-box;
+  border: 0.2px solid #5A8060;
+  border-radius: 2px;
+  background-color: white;
+  font-size: 16px;
+  resize: none;
+}
+
+button {
+  width: 80%;
+  height: 10%;
+  margin-left: 10%;
+  margin-bottom: 1%;
+  transition-duration: 0.4s;
+  border-radius: 6px;
+  padding: 0;
+  font-size: 12px;
+  background-color: #F1F1F1;
+  color: black;
+  border: 0.3px solid #5A8060;
+
+}
+
+button:hover {
+  background-color: #5A8060;
+  color: white;
+}

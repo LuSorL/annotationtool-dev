@@ -14,8 +14,7 @@ document.getElementById('InputText').addEventListener('submit', (evt) => {
   const input = evt.target[0]
 
   // send txt to main process
-  ipcRenderer.send('add-text', input.value)
-  alert("Envoyé")
+  ipcRenderer.send('add-json-key', input.value)
   // reset input
   input.value = ''
 

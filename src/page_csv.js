@@ -12,10 +12,8 @@ document.getElementById('InputText').addEventListener('submit', (evt) => {
 
   // input on the form
   const input = evt.target[0]
-
   // send txt to main process
-  ipcRenderer.send('add-text', input.value)
-  alert("Envoyé")
+  ipcRenderer.send('add-csv-key', input.value)
   // reset input
   input.value = ''
 

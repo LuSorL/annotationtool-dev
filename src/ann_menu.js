@@ -4,7 +4,7 @@ const {dialog} = require('electron').remote
 const fs = require('fs')
 const { ipcRenderer } = require('electron')
 var path = require('path')
-var d3 = require("d3")
+
 
 document.getElementById('Refresh').addEventListener('click', () => {
   ipcRenderer.send('maj')
@@ -58,37 +58,45 @@ document.getElementById('AddtxtBtn').addEventListener('click', () => {
             ipcRenderer.send('add-txt', data)
           }
         })
-      }else if( ext == '.json'){
-        fs.readFile(fileNames[0], 'utf-8', (err, data) => {
-          if (err){
-            console.log('cannot read file', err)
-          }else{
-            const obj = data.split('{')
-            for (var i = 1; i<obj.length; i++){
-              const text = obj[i].split('\'text\'')
-              const txt = text[1].split('\'')
-              ipcRenderer.send('add-txt', txt[1])
-            }
-          }
-        })
-      }else if (ext == '.csv'){
-        fs.readFile(fileNames[0], 'utf-8', (err, data) => {
-          if (err){
-            console.log('cannot read file', err)
-          }else{
-            const obj = data.split('\n')
-            var ind = 0
-            const index = obj[0].split(',')
-            for (var j = 0; j<index.length; j++){
-              if (index[j] == 'text'){
-                ind = j;
+      }else if(ext == '.json'){
+        ipcRenderer.send('add-json-window')
+        ipcRenderer.once('key-json', (event, key) => {
+          fs.readFile(fileNames[0], 'utf-8', (err, data) => {
+            if (err){
+              console.log('cannot read file', err)
+            }else{
+              const obj = data.split('{')
+              for (var i = 1; i<obj.length; i++){
+                const text = obj[i].split('\'' + key + '\'')
+                const txt = text[1].split('\'')
+                ipcRenderer.send('add-txt', txt[1])
               }
             }
-            for (var i = 1; i<obj.length-1; i++){
-              const text = obj[i].split(',')
-              ipcRenderer.send('add-txt', text[ind])
+          })
+        })
+      }else if (ext == '.csv'){
+        ipcRenderer.send('add-csv-window')
+        ipcRenderer.once('key-csv', (event, key_sep) => {
+          fs.readFile(fileNames[0], 'utf-8', (err, data) => {
+            if (err){
+              console.log('cannot read file', err)
+            }else{
+              const key = key_sep.split(';')[0]
+              const sep= key_sep.split(';')[1]
+              const obj = data.split('\n')
+              var ind = 0
+              const index = obj[0].split(',')
+              for (var j = 0; j<index.length; j++){
+                if (index[j] == key){
+                  ind = j;
+                }
+              }
+              for (var i = 1; i<obj.length-1; i++){
+                const text = obj[i].split(sep)
+                ipcRenderer.send('add-txt', text[ind])
+              }
             }
-          }
+          })
         })
       }
     }

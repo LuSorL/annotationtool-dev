@@ -118,6 +118,59 @@ function main() {
     }
   })
 
+
+  // Fenêtre secondaire qui va nous permettre de choisir la key pour Json
+  let jsonWin
+  // create annotation window
+  ipcMain.on('add-json-window', () => {
+    // if annWin does not already exist
+    if (!jsonWin) {
+      // create a new  window
+      jsonWin = new Window({
+        file: path.join('src', 'page_json.html'),
+        width: 200,
+        height: 200,
+        // close with the main window
+        parent: mainWindow
+      })
+
+      jsonWin.once('ready-to-show', () => {
+        jsonWin.show()
+      })
+      // cleanup
+      jsonWin.on('closed', () => {
+        jsonWin = null
+      })
+    }
+  })
+
+
+  // Fenêtre secondaire qui va nous permettre de choisir la key et
+  // separator pour fichier csv
+  let csvWin
+  // create annotation window
+  ipcMain.on('add-csv-window', () => {
+    // if annWin does not already exist
+    if (!csvWin) {
+      // create a new  window
+      csvWin = new Window({
+        file: path.join('src', 'page_csv.html'),
+        width: 200,
+        height: 200,
+        // close with the main window
+        parent: mainWindow
+      })
+
+      csvWin.once('ready-to-show', () => {
+        csvWin.show()
+      })
+      // cleanup
+      csvWin.on('closed', () => {
+        csvWin = null
+      })
+    }
+  })
+
   //Refresh le texte
   ipcMain.on('maj', (event) => {
     mainWindow.send('inputstoPrint', textData.inputs)
@@ -135,6 +188,14 @@ function main() {
   })
 
 
+ipcMain.on('add-json-key', (event, key) => {
+  mainWindow.send('key-json', key)
+})
+
+ipcMain.on('add-csv-key', (event, key) => {
+  console.log("key: " + key)
+  mainWindow.send('key-csv', key)
+})
 // add-txt ajoute le texte venant du fichier
 ipcMain.on('add-txt', (event, data) => {
   console.log(data)
