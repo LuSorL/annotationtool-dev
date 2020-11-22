@@ -4,6 +4,7 @@ const {dialog} = require('electron').remote
 const fs = require('fs')
 const { ipcRenderer } = require('electron')
 var path = require('path')
+const ExcelJS = require('exceljs');
 
 
 document.getElementById('Refresh').addEventListener('click', () => {
@@ -95,6 +96,30 @@ document.getElementById('AddtxtBtn').addEventListener('click', () => {
                 const text = obj[i].split(sep)
                 ipcRenderer.send('add-txt', text[ind])
               }
+            }
+          })
+        })
+      }else if (ext == '.xlsx'){
+        ipcRenderer.send('add-json-window')
+        ipcRenderer.once('key-json', (event, key) => {
+          const workBook = new ExcelJS.Workbook()
+          workBook.xlsx.readFile(filePath).then(function() {
+            const sheet = workBook.getWorksheet(1)
+            var print = 0
+            for (var i = 1; i<= sheet.columnCount; i++){
+              const col = sheet.getColumn(i)
+              col.eachCell({ includeEmpty: false }, function(cell, rowNumber) {
+                if (rowNumber == 1){
+                  print = 0
+                  if(cell.value ==key){
+                    print = 1
+                  }
+                }else {
+                  if (print == 1){
+                    ipcRenderer.send('add-txt', cell.value)
+                  }
+                }
+              })
             }
           })
         })
