@@ -29,7 +29,7 @@ body {
 
   aside {
     height: 100%;
-    width : 30%;
+    width : 10%;
     background-color: #5A8060;
     position: fixed; /* Stay in place */
     z-index: 1; /* Stay on top */

@@ -35,7 +35,8 @@ class DataStore extends Store {
   }
 
   addText (inputText) {
-    this.text = inputText
+    //this.text = inputText
+    this.text = [ ...this.text, inputText ]
     return this.saveText()
   }
 

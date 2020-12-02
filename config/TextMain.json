@@ -1,7 +1,9 @@
 {
-	"text": [],
+	"text": [
+		"fichier",
+		"texte"
+	],
 	"inputs": [
-		"Ford",
-		"Mercedes"
+		"cooucou"
 	]
 }

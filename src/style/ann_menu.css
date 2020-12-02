@@ -4,20 +4,24 @@ html {
 body{
   margin: 0;
   height: 100%;
+  width: 100%;
 }
 #entete, #menu, #contenu, #footer{
   padding:1px 0;
   margin: 0;
 }
 #entete {
-  background-color: #5A8060;
-  height: 20px;
+  background-color: rgb(71,71,71);
+  height: 30px;
   color:white;
-
 }
+
+
 
 #top {
   color: #F1F1F1;
+  font-size: 25px;
+  margin-right: 10px;
 }
 
 #top:hover {
@@ -32,41 +36,51 @@ body{
   float:left;
   height: 100%;
   width:200px;
-  background-color: #B5C7B8;
+  background-color: rgb(240,239,234);
+  position: relative;
 }
 #contenu {
   height: 100%;
   margin-left:200px;
-  background-color:#F5F5F5;
+  background-color: rgb(220,220,220);
 }
 
-
 header {
-    color : white;
-    grid-column: 1/-1;
+  color : white;
+  grid-column: 1/-1;
   }
 
 
- a {
-    padding-top: 12.5px;
-    padding-left: 5px;
-    text-decoration: none;
-    font-size: 15px;
-    color: black;
-    transition: 0.3s;
-  }
+a {
+  padding-top: 12.5px;
+  padding-left: 5px;
+  text-decoration: none;
+  font-size: 15px;
+  color: black;
+  transition: 0.3s;
+  border: transparent;
+}
 
- a:hover {
-    color: #f1f1f1;
-  }
+a.input-txt:hover {
+  border: solid;
+  border-width: thin;
+}
+.input-txt-toggle {
+  border: solid;
+  border-width: thin;
+}
+.input-txt{
+  border : transparent;
+}
 
 #Inputtxt {
-  margin-top: 4%;
-  height: 85%;
-  width: 80%;
-  margin-left: 10%;
+  margin-top: 2%;
+  height: 96%;
+  width: 70%;
+  margin-left: 2%;
+  margin-right: 2%;
   background-color:white;
-  position: center;
+  display: inline-block;
   overflow-y: auto;
 }
 
@@ -79,24 +93,138 @@ header {
   transition: 0.3s;
 }
 
+#buttonerase{
+  vertical-align:middle;
+  width:20px;
+  height:20px;
+  background:url(img/icons8-poubelle-32.png) no-repeat center;
+  background-size: 80%;
+  margin-left: 0%;
+  margin-top: 1px;
+  border: none;
+  display:inline-block;
+
+}
+
+#buttonConfirmer{
+  vertical-align:middle;
+  width:20px;
+  height:20px;
+  background:url(img/checkbox.png) no-repeat center;
+  background-size: 80%;
+  margin-left: 0%;
+  margin-top: 1px;
+  border: none;
+  display:inline-block;
+
+}
+
+#buttonModify{
+  vertical-align:middle;
+  display:inline-block;
+  width:20px;
+  height:20px;
+  background:url(img/stylo.jpg) no-repeat center;
+  background-size: 68%;
+  margin-left: 0%;
+  margin-top: 1px;
+  border: none;
+
+}
+
 #WriteBtn {
   margin-top: 10%;
 }
 
-button {
+
+.btn2{
+  position:absolute;
+  height:40px;
+  bottom: 10%;
+  left: 0;
+  background-color: rgb(23,132,219);
+  color:#fff;
+  font:bold 20px;
+}
+
+.btnHaut{
+  margin-top: 50%;
+}
+
+button{
   margin-left: 15%;
-  margin-top: 4%;
+  margin-top: 10%;
   transition-duration: 0.4s;
-  border-radius: 6px;
-  padding: 8px 15px;
-  font-size: 12px;
-  background-color: #F1F1F1;
+  border: none;
+ /* border-radius: 6px;
+  padding: 8px 15px; */
+  font-size: 20px;
+ /* background-color: #F1F1F1; */
+  background: transparent;
   color: black;
-  border: 0.3px solid #5A8060;
+  /*border: 0.3px solid #5A8060; */
   width:70%;
 }
 
+
 button:hover {
-  background-color: #5A8060;
   color: white;
+}
+
+
+#annotation {
+  margin-top: 2%;
+  height: 96%;
+  width: 24%;
+  background-color:white;
+  margin-right: 2%;
+}
+
+#ent {
+  background-color: rgb(85,156,121);
+  vertical-align: baseline;
+  height: 3%;
+  width: 100%;
+  color : white;
+  text-align: center;
+}
+
+.test {
+  float: left;
+}
+
+.search {
+  display: block;
+  overflow: auto;
+  text-align: left;
+}
+
+
+#mySearch {
+  width: 100%; /* Full-width */
+  font-size: 10px; /* Increase font-size */
+  padding: 12px 20px 12px 10px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a grey border */
+}
+
+#annList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#annList li a {
+  border: 1px solid #ddd; /* Add a border to all links */
+  margin-top: -1px; /* Prevent double borders */
+  background-color: white;
+  /* background-color: #f6f6f6; Grey background color */
+  padding: 2px; /* Add some padding */
+  text-decoration: none; /* Remove default text underline */
+  font-size: 12px; /* Increase the font-size */
+  color: black; /* Add a black text color */
+  display: block; /* Make it into a block element to fill the whole list */
+}
+
+#annList li a:hover:not(.header) {
+  background-color: #eee; /* Add a hover effect to all links, except for headers */
 }

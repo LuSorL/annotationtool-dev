@@ -1,1 +1,1 @@
-[{"text":"test objet 1","entities":[[5,12,"objet2"],[5,12,"objet6"],[5,12,"annSpecObj1"]],"type":[]},{"text":"test objet 2","entities":[[5,12,"annSpecObj2"]],"type":[]},{"text":"test objet 3","entities":[[5,12,"annSpecObj3"]],"type":[]}]
+[{"text":"cooucou","entities":[],"type":["testannglob"]}]

@@ -1,6 +1,6 @@
 
 body {
-  background-color: #B5C7B8;
+  background-color: rgb(220,220,220);
   font-family : Londrina Shadow;
  }
 
@@ -18,8 +18,8 @@ body {
 
 /* Annotation spécifique */
 .app_spec {
-  width: 300px;
-  height: 200px;
+  width: 450px;
+  height: 180px;
 }
 
 #InputText {
@@ -27,16 +27,13 @@ body {
   height : inherit;
 }
 
-h1 {
-  color : white;
-  font-size: 28px;
-}
+
 
 textarea {
   width: 90%;
   height: 70%;
   padding: 5%;
-  margin-left: 2%;
+  margin-left: 3%;
   margin-top: 1%;
   box-sizing: border-box;
   border: 0.2px solid #5A8060;
@@ -49,7 +46,7 @@ textarea {
 button {
   width: 80%;
   height: 10%;
-  margin-left: 10%;
+  margin-left: 8%;
   margin-bottom: 1%;
   transition-duration: 0.4s;
   border-radius: 6px;
@@ -62,6 +59,6 @@ button {
 }
 
 button:hover {
-  background-color: #5A8060;
-  color: white;
+  background-color: white;
+  color: rgb(220,220,220);
 }
